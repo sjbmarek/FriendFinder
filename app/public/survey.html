@@ -21,18 +21,18 @@
 		<h3><strong>About You</strong></h3>
 		<form>
 			<div class="form-group">
-				<label for="formGroupExampleInput">Name</label>
-				<input type="text" class="form-control" id="formGroupExampleInput">
+				<label for="friendName">Name</label>
+				<input type="text" class="form-control" id="friendName">
 			</div>
 			<div class="form-group">
-				<label for="formGroupExampleInput2">Link to Photo</label>
-				<input type="text" class="form-control" id="formGroupExampleInput2">
+				<label for="friendPhoto">Link to Photo</label>
+				<input type="text" class="form-control" id="friendPhoto">
 			</div>
 			<hr>
 			<br>
 
 			<p>1.  This is question 1</p>
-			<select class="custom-select mb-3">
+			<select class="custom-select mb-3 question1">
 				<option selected>Select on Option</option>
 				<option value="1">1 Strongly Disagree</option>
 				<option value="2">2</option>
@@ -42,7 +42,7 @@
 			</select>
 			<br>
 			<p>2.  This is question 2</p>
-			<select class="custom-select mb-3">
+			<select class="custom-select mb-3 question2">
 				<option selected>Select on Option</option>
 				<option value="1">1 Strongly Disagree</option>
 				<option value="2">2</option>
@@ -52,7 +52,7 @@
 			</select>
 			<br>
 			<p>3.  This is question 3</p>
-			<select class="custom-select mb-3">
+			<select class="custom-select mb-3 question3">
 				<option selected>Select on Option</option>
 				<option value="1">1 Strongly Disagree</option>
 				<option value="2">2</option>
@@ -66,16 +66,11 @@
 			<br>
 			<br>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			
 
 		</form>
 
 
-		<button type="button" class="btn btn-warning btn-lg btn-block"><i class="far fa-check-circle"></i> Submit</button>
+		<button type="submit" class="btn btn-warning btn-lg btn-block submit"><i class="far fa-check-circle"></i> Submit</button>
 	</div>
 
 
@@ -89,3 +84,59 @@
 
 </body>
 </html>
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+
+    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
+    $(".submit").on("click", function(event) {
+      event.preventDefault();
+
+      scoreArray=[];
+
+      for(var i=1; i=3; i++) {
+        	scoreArray.push((".question" + i).val());
+        };
+      console.log(scoreArray);
+      // Here we grab the form elements
+      var newFriend = {
+        friendName: $("#friendName").val().trim(),
+        friendPhoto: $("#friendPhoto").val().trim(),
+        friendScore: scoreArray
+      };
+
+      console.log(newFriend);
+
+      // This line is the magic. It"s very similar to the standard ajax function we used.
+      // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+      // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+      // depending on if a tables is available or not.
+
+      // $.post("/api/friends", newFriend,
+      //   function(data) {
+
+      //     // If a table is available... tell user they are booked.
+      //     if (data) {
+      //       alert("Yay! You are officially booked!");
+      //     }
+
+      //     // If a table is available... tell user they on the waiting list.
+      //     else {
+      //       alert("Sorry you are on the wait list");
+      //     }
+
+      //     // Clear the form when submitting
+      //     $("#reserve-name").val("");
+      //     $("#reserve-phone").val("");
+      //     $("#reserve-email").val("");
+      //     $("#reserve-unique-id").val("");
+
+      //   });
+
+    });
+
+</script>
