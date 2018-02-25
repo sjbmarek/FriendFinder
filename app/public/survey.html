@@ -32,7 +32,7 @@
 			<br>
 
 			<p>1.  This is question 1</p>
-			<select class="custom-select mb-3 question1">
+			<select class="custom-select mb-3" id= "question1">
 				<option selected>Select on Option</option>
 				<option value="1">1 Strongly Disagree</option>
 				<option value="2">2</option>
@@ -42,7 +42,7 @@
 			</select>
 			<br>
 			<p>2.  This is question 2</p>
-			<select class="custom-select mb-3 question2">
+			<select class="custom-select mb-3" id= "question2">
 				<option selected>Select on Option</option>
 				<option value="1">1 Strongly Disagree</option>
 				<option value="2">2</option>
@@ -52,7 +52,7 @@
 			</select>
 			<br>
 			<p>3.  This is question 3</p>
-			<select class="custom-select mb-3 question3">
+			<select class="custom-select mb-3" id= "question3">
 				<option selected>Select on Option</option>
 				<option value="1">1 Strongly Disagree</option>
 				<option value="2">2</option>
@@ -67,19 +67,20 @@
 			<br>
 			<br>
 
+			
+
+
+			<button type="button" class="btn btn-warning btn-lg btn-block submit"><i class="far fa-check-circle"></i> Submit</button>
 		</form>
-
-
-		<button type="submit" class="btn btn-warning btn-lg btn-block submit"><i class="far fa-check-circle"></i> Submit</button>
 	</div>
 
 
-    <footer class="footer">
-      <div class="container">
-        <hr>
-        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/sjbmarek/FriendFinder">GitHub Repo</a></p>
-      </div>
-    </footer>
+	<footer class="footer">
+		<div class="container">
+			<hr>
+			<p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/sjbmarek/FriendFinder">GitHub Repo</a></p>
+		</div>
+	</footer>
 
 
 </body>
@@ -87,6 +88,7 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
+	console.log("SCRIPT RUNNING");
 
     // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
     // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
@@ -94,49 +96,54 @@
     // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
     $(".submit").on("click", function(event) {
-      event.preventDefault();
+    	event.preventDefault();
+    	console.log("Button Clicked");
 
-      scoreArray=[];
-
-      for(var i=1; i=3; i++) {
-        	scoreArray.push((".question" + i).val());
-        };
-      console.log(scoreArray);
+    	scoreArray=[];
+    	for (var i=1; i<4; i++) {
+    		var selectedAnswer = $("#question"+i).val();
+    		selectedAnswer=parseInt(selectedAnswer);
+    		scoreArray.push(selectedAnswer);
+    	};
+    	console.log(scoreArray);
       // Here we grab the form elements
       var newFriend = {
-        friendName: $("#friendName").val().trim(),
-        friendPhoto: $("#friendPhoto").val().trim(),
-        friendScore: scoreArray
+      	friendName: $("#friendName").val().trim(),
+      	friendPhoto: $("#friendPhoto").val().trim(),
+      	friendScore: scoreArray
       };
 
       console.log(newFriend);
+
+      
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
       // depending on if a tables is available or not.
 
-      // $.post("/api/friends", newFriend,
-      //   function(data) {
+      $.post("/api/friends", newFriend,
+      	function(data) {
 
-      //     // If a table is available... tell user they are booked.
-      //     if (data) {
-      //       alert("Yay! You are officially booked!");
-      //     }
+          // // If a table is available... tell user they are booked.
+          // if (data) {
+          //   alert("Yay! You are officially booked!");
+          // }
 
-      //     // If a table is available... tell user they on the waiting list.
-      //     else {
-      //       alert("Sorry you are on the wait list");
-      //     }
+          // // If a table is available... tell user they on the waiting list.
+          // else {
+          //   alert("Sorry you are on the wait list");
+          // }
 
-      //     // Clear the form when submitting
-      //     $("#reserve-name").val("");
-      //     $("#reserve-phone").val("");
-      //     $("#reserve-email").val("");
-      //     $("#reserve-unique-id").val("");
+          // Clear the form when submitting
+          $("#friendName").val("");
+          $("#friendPhoto").val("");
+          for (var i=1; i<4; i++) {
+          	$("#question"+i).val("");
+          };
 
-      //   });
+      });
 
-    });
+  });
 
 </script>

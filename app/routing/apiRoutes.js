@@ -55,6 +55,6 @@ module.exports = function(app) {
     friendData = [];
     // waitListData = [];
 
-    console.log(friendData);
+    console.log(friends);
   });
 };
