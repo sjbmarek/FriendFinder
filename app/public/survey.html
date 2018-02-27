@@ -67,7 +67,7 @@
 			<br>
 			<br>
 
-			
+
 
 
 			<button type="button" class="btn btn-warning btn-lg btn-block submit"><i class="far fa-check-circle"></i> Submit</button>
@@ -110,12 +110,12 @@
       var newFriend = {
       	friendName: $("#friendName").val().trim(),
       	friendPhoto: $("#friendPhoto").val().trim(),
-      	friendScore: scoreArray
+      	friendScore: JSON.stringify(scoreArray)
       };
 
       console.log(newFriend);
 
-      
+
 
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".

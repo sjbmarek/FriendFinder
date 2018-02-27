@@ -41,7 +41,33 @@ module.exports = function(app) {
 
     // Compatability logic goes here
     // if (friendData.length < 5) {
+      console.log(req.body);
+      // req.friendData.friendScore = JSON.parse(req.friendData.friendScore);
       friendData.push(req.body);
+      friendData[friendData.length-1].friendScore=JSON.parse(friendData[friendData.length-1].friendScore);
+      console.log(friendData);
+
+      total=friendData.length-1;
+      console.log("total: " +total);
+      lowScore = 50;
+      matchindex = -1;
+      score = 0;
+
+      for (var i=0; i<friendData.length-1; i++) {
+        for (var j=0; j<friendData[i].friendScore.length;j++){
+          score += Math.abs(friendData[i].friendScore[j]-friendData[total].friendScore[j])
+          console.log("for loop score: " + score);
+        }
+        if (score<lowScore) {
+          lowScore = score;
+          console.log("lowscore: " +lowScore);
+          matchIndex = i
+          console.log("match index:" +matchIndex)
+          score = 0;
+        };
+      };
+
+
       // res.json(true);
     // }
   });

@@ -2,8 +2,13 @@
 var friendData = [
   {
     friendName: "Sara",
-    FriendPhoto: "PhotoLink",
-    scoreArray: [1, 1, 2]
+    friendPhoto: "PhotoLink",
+    friendScore: [1, 1, 2]
+  },
+    {
+    friendName: "Bill",
+    friendPhoto: "Photo Stuff",
+    friendScore: [4, 3, 5]
   }
 ];
 
