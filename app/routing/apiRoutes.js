@@ -67,9 +67,9 @@ module.exports = function(app) {
         };
         score = 0;
       };
-      res.json(matchIndex);
-      res.json(friendData[matchIndex].friendName);
-      res.json(friendData[matchIndex].friendPhoto);
+      res.json(friendData[matchIndex]);
+      // res.json(friendData[matchIndex].friendName);
+      // res.json(friendData[matchIndex].friendPhoto);
 
 
       // res.json(true);

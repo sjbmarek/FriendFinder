@@ -79,13 +79,15 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-users"></i> Best Match</h5>
+					<h5 class="modal-title"><i class="fas fa-users"></i> Best Match</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>This is the modal Stuff</p>
+					<!-- <p>This is the modal Stuff</p> -->
+					<h3 id=matchContentName></h3>
+					<div id=matchContentPhoto></div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -148,18 +150,20 @@
 
       $.post("/api/friends", newFriend,
       	function(data) {
-
+      	console.log("XXXXXXXXXXXXXXXXXXXXX");
       	console.log(data);
+      	 $("#matchContentName").append(data.friendName);
+      	 $("#matchContentPhoto").append("<img src = '" + data.friendPhoto  + "' height = '200'>");
 
-          // // If a table is available... tell user they are booked.
-          // if (data) {
-          //   alert("Yay! You are officially booked!");
-          // }
 
-          // // If a table is available... tell user they on the waiting list.
-          // else {
-          //   alert("Sorry you are on the wait list");
-          // }
+
+    $(".data-dismiss").on("click", function(event) {
+    	event.preventDefault();
+    	console.log("EMPTY THE MODAL INSIDE THE POST");
+    	$("#matchContentName").empty();
+    	$("#matchContentPhoto").empty();
+    	});
+
 
           // Clear the form when submitting
           $("#friendName").val("");
@@ -171,5 +175,13 @@
       });
 
   });
+
+    $(".data-dismiss").on("click", function(event) {
+    	event.preventDefault();
+    	console.log("EMPTY THE MODAL");
+    	$("#matchContentName").empty();
+    	$("#matchContentPhoto").empty();
+    	});
+
 
 </script>
