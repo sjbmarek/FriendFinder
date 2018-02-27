@@ -63,9 +63,13 @@ module.exports = function(app) {
           console.log("lowscore: " +lowScore);
           matchIndex = i
           console.log("match index:" +matchIndex)
-          score = 0;
+          // score = 0;
         };
+        score = 0;
       };
+      res.json(matchIndex);
+      res.json(friendData[matchIndex].friendName);
+      res.json(friendData[matchIndex].friendPhoto);
 
 
       // res.json(true);
