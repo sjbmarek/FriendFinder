@@ -49,7 +49,7 @@ module.exports = function(app) {
 
       total=friendData.length-1;
       console.log("total: " +total);
-      lowScore = 50;
+      lowScore = 100;
       matchindex = -1;
       score = 0;
 
@@ -60,9 +60,9 @@ module.exports = function(app) {
         }
         if (score<lowScore) {
           lowScore = score;
-          console.log("lowscore: " +lowScore);
-          matchIndex = i
-          console.log("match index:" +matchIndex)
+          console.log("lowscore: " + lowScore);
+          matchIndex = i;
+          console.log("match index:" + matchIndex);
           // score = 0;
         };
         score = 0;
