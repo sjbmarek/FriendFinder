@@ -12,7 +12,7 @@ Deployed to Heroku.
 
 ### App Basics
 
-1. A survey ofe 10 questions with answers on a scale of 1 to 5 based on how much the user agrees or disagrees with a question.
+1. A survey of 10 questions with answers on a scale of 1 to 5 based on how much the user agrees or disagrees with a question.
 
 2.  `htmlRoutes.js` file contains two routes:
 
