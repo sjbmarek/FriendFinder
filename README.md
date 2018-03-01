@@ -27,9 +27,15 @@ Deployed to Heroku.
 4. Compatibility logic:
 
    * Compare the users survey to each possible friend in the library.  
-   *The match score will be sum of the absolute values of the differences of values for each survey question.
+   * The match score will be sum of the absolute values of the differences of values for each survey question.
    * Find the lowest match score
 5. The result is displayed as a modal pop-up with the name and picture of the closest match.
+
+### App Additions
+
+Future work on this project: 
+  * Form validation for name and photo link
+  * Friend object shuffle (current logic selects the first lowest match score when looping through the friend object).  A Fisher-Yates Shuffle could be added to accomplish this.
 
 - - -
 
