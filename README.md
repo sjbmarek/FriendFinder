@@ -7,9 +7,9 @@
 This is "FriendFinder"-- basically a friendship compatibility app. This full-stack site takes in results from users' surveys, then compares their answers with those from other users. The app will display the name and picture of the user with the best overall match. 
 
 Npm modules:  
-  Express
-  Body-parser
-  Path
+  * Express
+  * Body-parser
+  * Path
 
 
 Deployed to Heroku.  https://gentle-retreat-16287.herokuapp.com/
