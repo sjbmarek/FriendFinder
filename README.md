@@ -4,10 +4,15 @@
 
 ### Overview
 
-This is "FriendFinder"-- basically a dating app. This full-stack site will takes in results from users' surveys, then compares their answers with those from other users. The app will then display the name and picture of the user with the best overall match. 
+This is "FriendFinder"-- basically a friendship compatibility app. This full-stack site takes in results from users' surveys, then compares their answers with those from other users. The app will display the name and picture of the user with the best overall match. 
 
-Npm modules:  Express, Body-parser and Path.
-Deployed to Heroku.
+Npm modules:  
+  Express
+  Body-parser
+  Path
+
+
+Deployed to Heroku.  https://gentle-retreat-16287.herokuapp.com/
 
 
 ### App Basics
@@ -39,5 +44,4 @@ Future work on this project:
 
 - - -
 
-### Added To My Portfolio
 
